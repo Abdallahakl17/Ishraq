@@ -1,0 +1,52 @@
+name: ishraq
+description: "Ishraq - Quran & Islamic App"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  flutter_native_splash: ^2.4.7
+  flutter_screenutil: ^5.9.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.14.4
+  flutter_lints: ^6.0.0
+
+flutter_native_splash:
+  color: "#202020"
+  image: assets/images/splash.png
+  branding: assets/images/branding.png
+  branding_bottom_padding: 24
+  android_12:
+    color: "#202020"
+    image: assets/images/splash12.png
+    branding: assets/images/branding.png
+    branding_bottom_padding: 24
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/logo.png"
+  adaptive_icon_background: "#202020"
+  adaptive_icon_foreground: "assets/images/logo.png"
+  remove_alpha_ios: true
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/icons/
+
+  fonts:
+    - family: JannaLT
+      fonts:
+        - asset: assets/fonts/alfont_com_Janna-LT-Bold.ttf
