@@ -13,6 +13,8 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_native_splash: ^2.4.7
   flutter_screenutil: ^5.9.3
+  shared_preferences: ^2.5.4
+  dio: ^5.9.2
 
 dev_dependencies:
   flutter_test:
@@ -35,10 +37,9 @@ flutter_launcher_icons:
   android: true
   ios: true
   image_path: "assets/images/logo.png"
-  adaptive_icon_background: "#202020"
+  adaptive_icon_background: "#FFFFFF"
   adaptive_icon_foreground: "assets/images/logo.png"
   remove_alpha_ios: true
-
 flutter:
   uses-material-design: true
 

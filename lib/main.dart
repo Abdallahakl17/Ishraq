@@ -1,14 +1,17 @@
- 
-
+import 'package:ishraq/core/assets/shared/shared_prefs_helper.dart';
 import 'package:ishraq/core/my_shared.dart';
 import 'package:ishraq/features/home/screens/home_screen.dart';
+import 'package:ishraq/features/on_boarding/screens/onboarding_screen.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async{
+    WidgetsFlutterBinding.ensureInitialized(); 
+  bool completed = await SharedPrefsHelper.instance.getOnboardingStatus();
+  runApp(  MyApp(startPage: completed?AppRoutes.home :AppRoutes.onBoarding ,));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key ,required this .startPage});
+  final String startPage;
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +23,14 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           theme: AppTheme.light,
           debugShowCheckedModeBanner: false,
-          initialRoute: AppRoutes.home,
-          routes: {AppRoutes.home: (context) => child!},
+
+          initialRoute: startPage ,
+          routes: {
+            AppRoutes.onBoarding: (context) => OnboardingScreen(),
+            AppRoutes.home: (context) => HomeScreen(),
+          },
         );
       },
-      child:   HomeScreen(),
     );
   }
 }

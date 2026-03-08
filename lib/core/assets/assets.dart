@@ -4,6 +4,11 @@ abstract class AppAssetsImages {
   static const String backgroundImage = '${mainAssetsPath}background.png';
   static const String sebhaBodyImage = '${mainAssetsPath}SebhaBody.png';
   static const String rangSebhaImage = '${mainAssetsPath}rang_sebha.png';
+  static const String kaabaImage = '${mainAssetsPath}K.png';
+  static const String micRadioImage = '${mainAssetsPath}mic_radio.png';
+  static const String prayImage = '${mainAssetsPath}pray.png';
+  static const String wellcomImage = '${mainAssetsPath}welcom.png';
+  static const String quranAndSebhaImage = '${mainAssetsPath}qurqn_sebha.png';
 }
 
 abstract class AppAssetsIcons {
@@ -16,3 +21,4 @@ abstract class AppAssetsIcons {
 }
 
 abstract class AppAssetsSvgImages {}
+ 

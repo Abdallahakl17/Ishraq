@@ -28,6 +28,16 @@ final ThemeData lightTheme = ThemeData(
   ),
   iconTheme: IconThemeData(color: AppColorsLigth.gold, size: 20.sp),
   textTheme: TextTheme(
+    headlineMedium: TextStyle(
+     fontSize: 24.sp,
+      fontWeight: FontWeight.bold,
+      color: AppColorsLigth.gold,
+  ),
+    headlineSmall: TextStyle(
+     fontSize: 20.sp,
+      fontWeight: FontWeight.bold,
+      color: AppColorsLigth.gold,
+  ),
     labelLarge: TextStyle(
       fontSize: 24.sp,
       fontWeight: FontWeight.bold,
