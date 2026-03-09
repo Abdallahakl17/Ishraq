@@ -1,19 +1,25 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefsHelper {
-  static const String saveOnboareding = 'onboarding_completed';
+
+  static const String onboardingKey = 'onboarding_completed';
+
+  static late SharedPreferences prefs;
+
   SharedPrefsHelper._privateConstructor();
+
   static final SharedPrefsHelper instance =
       SharedPrefsHelper._privateConstructor();
-
-  Future<void> saveOnboardingStatus(bool isComplete) async {
-    final pref = await SharedPreferences.getInstance();
-    await pref.setBool(saveOnboareding, isComplete);
-    print(pref.get(saveOnboareding));
+  static Future init() async {
+    prefs = await SharedPreferences.getInstance();
   }
 
-  Future<bool> getOnboardingStatus() async {
-    final prefs = await SharedPreferences.getInstance();
-    return prefs.getBool(saveOnboareding) ?? false;
+   Future<void> saveOnboardingStatus(bool value) async {
+    await prefs.setBool(onboardingKey, value);
   }
+
+   bool getOnboardingStatus() {
+    return prefs.getBool(onboardingKey) ?? false;
+  }
+
 }

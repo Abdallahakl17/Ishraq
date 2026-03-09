@@ -145,14 +145,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     text: currentPage == pages.length - 1
                         ? AppString.finish
                         : AppString.next,
-                    onPressed: ()async {
+                    onPressed: () async {
                       if (currentPage < pages.length - 1) {
                         controller.nextPage(
                           duration: const Duration(milliseconds: 400),
                           curve: Curves.easeInOut,
                         );
                       } else {
-                            await SharedPrefsHelper.instance.saveOnboardingStatus(true);
+                        await SharedPrefsHelper.instance.saveOnboardingStatus(
+                          true,
+                        );
+                        if (!mounted) return;
 
                         Navigator.pushReplacementNamed(context, AppRoutes.home);
                       }

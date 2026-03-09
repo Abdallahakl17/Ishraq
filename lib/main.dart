@@ -5,8 +5,9 @@ import 'package:ishraq/features/on_boarding/screens/onboarding_screen.dart';
 
 void main() async{
     WidgetsFlutterBinding.ensureInitialized(); 
-  bool completed = await SharedPrefsHelper.instance.getOnboardingStatus();
-  runApp(  MyApp(startPage: completed?AppRoutes.home :AppRoutes.onBoarding ,));
+await  SharedPrefsHelper.init();
+bool complete  = SharedPrefsHelper.instance.getOnboardingStatus();
+  runApp(  MyApp(startPage:complete ?AppRoutes.home :AppRoutes.onBoarding ,));
 }
 
 class MyApp extends StatelessWidget {
