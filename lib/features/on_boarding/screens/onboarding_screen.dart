@@ -79,7 +79,7 @@ void didChangeDependencies() {
                 onPageChanged: onPageChanged,
                 itemBuilder: (context, index) {
                   return AnimatedPadding(
-                    duration: const Duration(milliseconds: 500),
+                    duration: const Duration(milliseconds: 400),
                     padding: EdgeInsets.symmetric(
                       horizontal: currentPage == index ? 0 : 30.w,
                     ),
