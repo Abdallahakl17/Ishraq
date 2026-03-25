@@ -1,4 +1,4 @@
-import 'package:ishraq/core/assets/shared/shared_prefs_helper.dart';
+import 'package:ishraq/core/shared/shared_prefs_helper.dart';
 import 'package:ishraq/core/my_shared.dart';
 import 'package:ishraq/features/home/screens/home_screen.dart';
 import 'package:ishraq/features/on_boarding/screens/onboarding_screen.dart';

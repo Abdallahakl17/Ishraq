@@ -1,4 +1,4 @@
-import 'package:ishraq/core/assets/shared/shared_prefs_helper.dart'    ;
+import 'package:ishraq/core/shared/shared_prefs_helper.dart';
 import 'package:ishraq/core/my_shared.dart';
 import 'package:ishraq/features/on_boarding/models/onboarding_model.dart';
 import 'package:ishraq/features/on_boarding/widgets/custom_button.dart';
@@ -12,16 +12,22 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  PageController controller = PageController();
-@override
-
-void didChangeDependencies() {
-  super.didChangeDependencies();
-
-  for (var page in pages) {
-    precacheImage(AssetImage(page.img), context);
+  late PageController controller;
+  @override
+  void initState() {
+    super.initState();
+      controller = PageController();
   }
-}
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    for (var page in pages) {
+      precacheImage(AssetImage(page.img), context);
+    }
+  }
+
   void onPageChanged(int index) {
     setState(() {
       currentPage = index;

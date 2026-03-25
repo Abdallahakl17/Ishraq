@@ -29,15 +29,15 @@ final ThemeData lightTheme = ThemeData(
   iconTheme: IconThemeData(color: AppColorsLigth.gold, size: 20.sp),
   textTheme: TextTheme(
     headlineMedium: TextStyle(
-     fontSize: 24.sp,
+      fontSize: 24.sp,
       fontWeight: FontWeight.bold,
       color: AppColorsLigth.gold,
-  ),
+    ),
     headlineSmall: TextStyle(
-     fontSize: 20.sp,
+      fontSize: 20.sp,
       fontWeight: FontWeight.bold,
       color: AppColorsLigth.gold,
-  ),
+    ),
     labelLarge: TextStyle(
       fontSize: 24.sp,
       fontWeight: FontWeight.bold,
@@ -78,9 +78,8 @@ final ThemeData lightTheme = ThemeData(
     ),
   ),
   inputDecorationTheme: InputDecorationTheme(
-    isDense: true,
-    filled: true,
-    fillColor: AppColorsLigth.primaryColor,
+    fillColor: Colors.transparent,
+    prefixIconColor: AppColorsLigth.gold,
     hintStyle: TextStyle(
       color: AppColorsLigth.white,
       fontSize: 16.sp,
@@ -109,12 +108,30 @@ final ThemeData lightTheme = ThemeData(
     ),
   ),
   listTileTheme: ListTileThemeData(
+    titleTextStyle: TextStyle(
+      fontSize: 20.sp,
+      fontWeight: FontWeight.bold,
+      color: AppColorsLigth.white,
+    ),
+    subtitleTextStyle: TextStyle(
+      fontSize: 14.sp,
+      fontWeight: FontWeight.bold,
+      color: AppColorsLigth.white,
+    ),
     tileColor: Colors.transparent,
     textColor: AppColorsLigth.white,
     iconColor: AppColorsLigth.white,
-    leadingAndTrailingTextStyle: TextStyle(color: AppColorsLigth.white),
+    leadingAndTrailingTextStyle: TextStyle(
+      fontSize: 20.sp,
+      fontWeight: FontWeight.bold,
+      color: AppColorsLigth.white,
+    ),
     contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-    dense: true,
-    style: ListTileStyle.drawer,
+  ),
+
+  dividerTheme: DividerThemeData(
+    endIndent: 55.w,
+    indent: 55.w,
+    color: AppColorsLigth.white,
   ),
 );

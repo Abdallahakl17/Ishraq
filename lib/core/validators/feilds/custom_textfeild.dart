@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ishraq/core/theme/app_color/app_colors_ligth.dart';
 
 class CustomTextField extends StatelessWidget {
   final String? hintText;
@@ -37,6 +38,9 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      cursorColor: AppColorsLigth.gold,
+
+      style: Theme.of(context).textTheme.labelMedium,
       controller: controller,
       keyboardType: keyboardType,
       obscureText: obscureText,
@@ -45,13 +49,14 @@ class CustomTextField extends StatelessWidget {
       focusNode: focusNode,
       onFieldSubmitted: onFieldSubmitted,
       enabled: enabled,
-      maxLines: maxLines,onChanged:onChanged,
+      maxLines: maxLines,
+      onChanged: onChanged,
       decoration: InputDecoration(
         labelText: labelText,
         hintText: hintText,
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
-       ),
+      ),
     );
   }
 }
