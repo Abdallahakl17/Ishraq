@@ -697,3 +697,60 @@ class SurahModel {
     ),
   ];
 }
+ 
+class VerseModel {
+  final int globalId;
+  final int surahNumber;
+  final int ayahNumber;
+  final String verseKey;
+  final String textAr;
+
+  VerseModel({
+    required this.globalId,
+    required this.surahNumber,
+    required this.ayahNumber,
+    required this.verseKey,
+    required this.textAr,
+  });
+
+  factory VerseModel.fromJson(Map<String, dynamic> json) {
+    return VerseModel(
+      globalId: json['global_id'],
+      surahNumber: json['surah'],
+      ayahNumber: json['ayah'],
+      verseKey: json['verse_key'],
+      textAr: json['text_ar'],
+    );
+  }
+}
+class SuraItemsModel {
+  final int surahNumber;
+  final String nameEn;
+  final String nameAr;
+  final int versesCount;
+  final String revelationPlace;
+  final List<VerseModel> verses;
+
+  SuraItemsModel({
+    required this.surahNumber,
+    required this.nameEn,
+    required this.nameAr,
+    required this.versesCount,
+    required this.revelationPlace,
+    required this.verses,
+  });
+
+  factory SuraItemsModel.fromJson(Map<String, dynamic> json) {
+    return SuraItemsModel(
+      surahNumber: json['surah_number'],
+      nameEn: json['name_en'],
+      nameAr: json['name_ar'],
+      versesCount: json['verses_count'],
+      revelationPlace: json['revelation_place'],
+
+      verses: (json['verses'] as List)
+          .map((e) => VerseModel.fromJson(e))
+          .toList(),
+    );
+  }
+}

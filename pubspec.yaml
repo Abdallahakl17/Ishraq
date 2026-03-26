@@ -14,8 +14,8 @@ dependencies:
   flutter_native_splash: ^2.4.7
   flutter_screenutil: ^5.9.3
   shared_preferences: ^2.5.4
-  dio: ^5.9.2
-
+  provider: ^6.1.5+1
+ 
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -46,7 +46,8 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
-
+    - assets/files/surahs/
+ 
   fonts:
     - family: JannaLT
       fonts:

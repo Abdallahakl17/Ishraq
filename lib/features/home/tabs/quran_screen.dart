@@ -1,6 +1,7 @@
 import 'package:ishraq/core/my_shared.dart';
 import 'package:ishraq/core/validators/feilds/custom_textfeild.dart';
 import 'package:ishraq/features/home/models/sura_items_model.dart';
+import 'package:ishraq/features/home/screens/sura_deatails.dart';
 import 'package:ishraq/features/home/widgets/custom_list_items_sura.dart';
 import 'package:ishraq/features/home/widgets/custom_most_recent.dart';
 
@@ -65,7 +66,23 @@ class QuranScreen extends StatelessWidget {
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
                   itemBuilder: (BuildContext context, int index) =>
-                      CustomListItemsSura(surahModel: SurahModel.suras[index]),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => SuraDetailsScreen(
+                                surahNumber:
+                                    SurahModel.suras[index].numSuraIndex,
+                              ),
+                            ),
+                          );
+                        },
+
+                        child: CustomListItemsSura(
+                          surahModel: SurahModel.suras[index],
+                        ),
+                      ),
                   separatorBuilder: (BuildContext context, int index) =>
                       Divider(),
                   itemCount: SurahModel.suras.length,

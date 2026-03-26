@@ -6,32 +6,25 @@ class CustomListItemsSura extends StatelessWidget {
   SurahModel surahModel;
   @override
   Widget build(BuildContext context) {
-    return  
-       
-       
-       ListTile(
-        leading: Stack(
-          alignment: Alignment.center,
+    return ListTile(
+      leading: Stack(
+        alignment: Alignment.center,
 
-          children: [
-            ImageIcon(AssetImage(AppAssetsIcons.numberSuraIcon), size: 52.r),
-            Positioned(
-              child: Text(
-               surahModel.numSuraIndex.toString(),
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium!.copyWith(fontSize: 14.sp),
-              ),
+        children: [
+          ImageIcon(AssetImage(AppAssetsIcons.numberSuraIcon), size: 52.r),
+          Positioned(
+            child: Text(
+              surahModel.numSuraIndex.toString(),
+              style: Theme.of(
+                context,
+              ).textTheme.titleMedium!.copyWith(fontSize: 14.sp),
             ),
-          ],
-        ),
-        title: Text(surahModel.nameSuraEn),
-        trailing: Text(surahModel.nameSuraAr),
-        subtitle: Text(surahModel.numSuraRevres),
-         
-          
-          ); 
-       
-    
+          ),
+        ],
+      ),
+      title: Text(surahModel.nameSuraEn),
+      trailing: Text(surahModel.nameSuraAr),
+      subtitle: Text(surahModel.numSuraRevres),
+    );
   }
 }

@@ -1,4 +1,3 @@
-import 'package:flutter/services.dart';
 import 'package:ishraq/core/my_shared.dart';
 
 final ThemeData lightTheme = ThemeData(
@@ -7,24 +6,20 @@ final ThemeData lightTheme = ThemeData(
   scaffoldBackgroundColor: AppColorsLigth.primaryColor,
   fontFamily: 'JannaLT',
   appBarTheme: AppBarTheme(
+    centerTitle: true,
     elevation: 0,
     backgroundColor: AppColorsLigth.primaryColor,
-    iconTheme: IconThemeData(color: AppColorsLigth.primaryColor, size: 24.sp),
-    actionsIconTheme: IconThemeData(
-      color: AppColorsLigth.primaryColor,
-      size: 24.sp,
-    ),
+
+    iconTheme: IconThemeData(color: AppColorsLigth.gold, size: 24.sp),
+
+    actionsIconTheme: IconThemeData(color: AppColorsLigth.gold, size: 24.sp),
+
     titleTextStyle: TextStyle(
       fontSize: 20.sp,
       fontWeight: FontWeight.bold,
-      color: AppColorsLigth.primaryColor,
+      color: AppColorsLigth.gold,
       fontFamily: 'JannaLT',
     ),
-    toolbarHeight: 56.h,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(bottom: Radius.circular(16.r)),
-    ),
-    systemOverlayStyle: SystemUiOverlayStyle.light,
   ),
   iconTheme: IconThemeData(color: AppColorsLigth.gold, size: 20.sp),
   textTheme: TextTheme(
@@ -133,5 +128,9 @@ final ThemeData lightTheme = ThemeData(
     endIndent: 55.w,
     indent: 55.w,
     color: AppColorsLigth.white,
+  ),
+  progressIndicatorTheme: ProgressIndicatorThemeData(
+    color: AppColorsLigth.gold,
+    circularTrackColor: AppColorsLigth.gold.withAlpha(50),
   ),
 );
