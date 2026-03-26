@@ -83,11 +83,14 @@ class _SebhaScreenState extends State<SebhaScreen> {
                       child: InkWell(
                         onTap: changedSebha,
                         child: FittedBox(
-                          child: Image.asset(
-                            fit: BoxFit.cover,
-                            AppAssetsImages.sebhaBodyImage,
+                          child: Transform.translate(
+                            offset: Offset(0, -8),
+                            child: Image.asset(
+                              fit: BoxFit.cover,
+                              AppAssetsImages.sebhaBodyImage,
 
-                            height: 381.w,
+                              height: 381.w,
+                            ),
                           ),
                         ),
                       ),

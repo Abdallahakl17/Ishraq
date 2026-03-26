@@ -126,7 +126,7 @@ final ThemeData lightTheme = ThemeData(
       fontWeight: FontWeight.bold,
       color: AppColorsLigth.white,
     ),
-    contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+    contentPadding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
   ),
 
   dividerTheme: DividerThemeData(
