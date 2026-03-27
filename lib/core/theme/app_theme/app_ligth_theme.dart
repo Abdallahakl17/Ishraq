@@ -36,7 +36,7 @@ final ThemeData lightTheme = ThemeData(
     labelLarge: TextStyle(
       fontSize: 24.sp,
       fontWeight: FontWeight.bold,
-      color: AppColorsLigth.primaryColor,
+      color: AppColorsLigth.black,
     ),
     labelMedium: TextStyle(
       fontSize: 16.sp,
@@ -46,8 +46,12 @@ final ThemeData lightTheme = ThemeData(
     labelSmall: TextStyle(
       fontSize: 14.sp,
       fontWeight: FontWeight.bold,
-      color: AppColorsLigth.primaryColor,
+      color: AppColorsLigth.black,
     ),
+    displaySmall: TextStyle(
+      fontSize: 16.sp,
+      fontWeight: FontWeight.bold,
+      color: AppColorsLigth.black,),
     titleMedium: TextStyle(
       fontSize: 20.sp,
       fontWeight: FontWeight.bold,

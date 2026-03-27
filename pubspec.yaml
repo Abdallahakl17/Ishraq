@@ -15,6 +15,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   shared_preferences: ^2.5.4
   provider: ^6.1.5+1
+  carousel_slider: ^5.1.2
  
 dev_dependencies:
   flutter_test:
@@ -47,7 +48,9 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/files/surahs/
+    - assets/files/Hadeeth/
  
+
   fonts:
     - family: JannaLT
       fonts:

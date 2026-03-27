@@ -8,4 +8,5 @@ abstract class AppColorsLigth {
    static const Color grey = Color(0xFF707070);
    static const Color offWhite = Color(0xFFFFF5E3);
    static const Color white = Color(0xFFFFFFFF);
+   static const Color black = Color(0xFF202020);
  }

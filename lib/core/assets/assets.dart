@@ -13,8 +13,9 @@ abstract class AppAssetsImages {
   static const String angleRigthImage = '${mainAssetsPath}angle_rigth.png';
   static const String angleLeftImage = '${mainAssetsPath}angle_left.png';
   static const String mosqaImage = '${mainAssetsPath}mosqa.png';
+  static const String hadithBgImage = '${mainAssetsPath}bg_hadith.png';
   static const String quranRescentImage = '${mainAssetsPath}quran_rescent_image.png';
-}   
+}  
 abstract class AppAssetsIcons {
   static const String mainAssetsPath = 'assets/icons/';
   static const String qeuranIcon = '${mainAssetsPath}quran_icon.png';
