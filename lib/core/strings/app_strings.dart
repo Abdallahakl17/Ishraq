@@ -6,8 +6,9 @@ abstract class AppString {
   static const String time = 'Time';
   static const String radio = 'Radio';
   static const String next = 'Next';
+  static const String reciters = 'Reciters';
   static const String back = 'Back';
-  static const String finish = 'Finish';
+   static const String finish = 'Finish';
   static const String surasList = 'Suras List';
   static const String app = 'App';
   static const String welcomApp = 'Welcome To Islami$app';

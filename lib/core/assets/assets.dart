@@ -15,8 +15,8 @@ abstract class AppAssetsImages {
   static const String mosqaImage = '${mainAssetsPath}mosqa.png';
   static const String hadithBgImage = '${mainAssetsPath}bg_hadith.png';
   static const String quranRescentImage = '${mainAssetsPath}quran_rescent_image.png';
-}  
-abstract class AppAssetsIcons {
+  static const String quranReadImage = '${mainAssetsPath}read_qran.png';
+ }                                                                                                                                                                                        abstract class AppAssetsIcons {
   static const String mainAssetsPath = 'assets/icons/';
   static const String qeuranIcon = '${mainAssetsPath}quran_icon.png';
   static const String numberSuraIcon = '${mainAssetsPath}icon_number_sura.png';

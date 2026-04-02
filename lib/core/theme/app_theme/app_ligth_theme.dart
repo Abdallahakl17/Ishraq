@@ -5,6 +5,20 @@ final ThemeData lightTheme = ThemeData(
   primaryColor: AppColorsLigth.primaryColor,
   scaffoldBackgroundColor: AppColorsLigth.primaryColor,
   fontFamily: 'JannaLT',
+
+  tabBarTheme: TabBarThemeData(
+    indicatorColor: Colors.transparent,
+    indicator: BoxDecoration(
+      color: AppColorsLigth.gold,
+      borderRadius: BorderRadius.circular(12.r),
+    ),
+    labelColor: AppColorsLigth.black,
+    unselectedLabelColor: AppColorsLigth.white,
+    labelStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+    unselectedLabelStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+    indicatorSize: TabBarIndicatorSize.tab,
+  ),
+
   appBarTheme: AppBarTheme(
     centerTitle: true,
     elevation: 0,
@@ -51,11 +65,17 @@ final ThemeData lightTheme = ThemeData(
     displaySmall: TextStyle(
       fontSize: 16.sp,
       fontWeight: FontWeight.bold,
-      color: AppColorsLigth.black,),
+      color: AppColorsLigth.black,
+    ),
     titleMedium: TextStyle(
       fontSize: 20.sp,
       fontWeight: FontWeight.bold,
       color: AppColorsLigth.white,
+    ),
+    bodyLarge: TextStyle(
+      fontSize: 20.sp,
+      fontWeight: FontWeight.bold,
+      color: AppColorsLigth.black,
     ),
     titleLarge: TextStyle(
       fontSize: 36.sp,
