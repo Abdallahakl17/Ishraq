@@ -11,6 +11,7 @@ abstract class AppString {
    static const String finish = 'Finish';
   static const String surasList = 'Suras List';
   static const String app = 'App';
+  static const String azkar = 'Azkar';
   static const String welcomApp = 'Welcome To Islami$app';
   static const String welcom = 'Welcome To Islami';
   static const String weAreExcited = 'We Are Very Excited To Have You In Our Community';

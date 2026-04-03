@@ -2,7 +2,7 @@ import 'package:ishraq/core/my_shared.dart';
 import 'package:ishraq/core/validators/feilds/custom_textfeild.dart';
 import 'package:ishraq/features/home/models/sura_items_model.dart';
 import 'package:ishraq/features/home/screens/sura_deatails.dart';
-import 'package:ishraq/features/home/widgets/custom_list_items_sura.dart';
+import 'package:ishraq/features/home/widgets/sura_screen/custom_list_items_sura.dart';
 import 'package:ishraq/features/home/widgets/custom_most_recent.dart';
 
 class QuranScreen extends StatelessWidget {

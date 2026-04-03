@@ -1,8 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:ishraq/controller/radio_contoller.dart';
 import 'package:ishraq/core/my_shared.dart';
-import 'package:ishraq/features/home/widgets/Custom_Container_Radio_Play.dart';
-import 'package:ishraq/features/home/widgets/custom_selected_radio_tab.dart';
+import 'package:ishraq/features/home/widgets/radio_screen/Custom_Container_Radio_Play.dart';
+import 'package:ishraq/features/home/widgets/radio_screen/custom_selected_radio_tab.dart';
 import 'package:provider/provider.dart';
 
 class RadioScreen extends StatelessWidget {
@@ -17,15 +17,11 @@ class RadioScreen extends StatelessWidget {
           toolbarHeight: 200,
           elevation: 0,
           flexibleSpace: Center(
-            child: Image.asset(
-              AppAssetsImages.logoImage,
-              height: 170.h,
-              fit: BoxFit.cover,
-            ),
+            child: Image.asset(AppAssetsImages.logoImage, fit: BoxFit.cover),
           ),
 
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(50.h),
+            preferredSize: Size.fromHeight(5.h),
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
               color: Colors.transparent,

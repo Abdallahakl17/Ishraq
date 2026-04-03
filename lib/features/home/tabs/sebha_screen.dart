@@ -53,8 +53,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
                 Center(
                   child: Image.asset(
                     AppAssetsImages.logoImage,
-                    width: 270.w,
-                    height: 170.h,
+                   fit: BoxFit.cover,
                   ),
                 ),
 

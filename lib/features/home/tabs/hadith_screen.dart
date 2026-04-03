@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ishraq/core/my_shared.dart';
-import 'package:ishraq/features/home/widgets/hadith_card.dart';
+import 'package:ishraq/features/home/widgets/hadith_screen/hadith_card.dart';
 
 class HadithScreen extends StatelessWidget {
   const HadithScreen({super.key});
