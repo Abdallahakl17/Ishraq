@@ -1,5 +1,6 @@
 import 'package:ishraq/controller/hadith_controller.dart';
 import 'package:ishraq/controller/radio_contoller.dart';
+import 'package:ishraq/controller/time_controller.dart';
 import 'package:ishraq/core/shared/shared_prefs_helper.dart';
 import 'package:ishraq/core/my_shared.dart';
  import 'package:ishraq/features/home/screens/home_screen.dart';
@@ -22,8 +23,10 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => HadithController()),
-        ChangeNotifierProvider(create: (_) => RadioContoller()),
-       ],
+        ChangeNotifierProvider(create: (_) => RadioContoller()), ChangeNotifierProvider(
+      create: (_) => TimeController()..fetchPrayerTimes(),
+      ),
+      ],
       child: ScreenUtilInit(
         designSize: const Size(430, 932),
         minTextAdapt: true,

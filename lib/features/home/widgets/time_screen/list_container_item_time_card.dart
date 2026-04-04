@@ -1,7 +1,16 @@
 import 'package:ishraq/core/my_shared.dart';
 
 class ListContainerItemTimeCard extends StatelessWidget {
-  const ListContainerItemTimeCard({super.key});
+  final String prayerName;
+  final String time;
+  final String period;
+
+  const ListContainerItemTimeCard({
+    super.key,
+    required this.prayerName,
+    required this.time,
+    required this.period,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,22 +27,22 @@ class ListContainerItemTimeCard extends StatelessWidget {
           ],
         ),
         borderRadius: BorderRadius.circular(20.r),
-        color: AppColorsLigth.primaryColor,
       ),
       child: FittedBox(
         fit: BoxFit.scaleDown,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          mainAxisSize: MainAxisSize.min,
           children: [
-            Text('Aser', style: Theme.of(context).textTheme.labelMedium),
+            Text(prayerName, style: Theme.of(context).textTheme.titleMedium),
+
             Text(
-              '04:38',
+              time,
               style: Theme.of(
                 context,
               ).textTheme.headlineLarge!.copyWith(color: AppColorsLigth.white),
             ),
-            Text('PM', style: Theme.of(context).textTheme.labelMedium),
+
+            Text(period, style: Theme.of(context).textTheme.labelMedium),
           ],
         ),
       ),
