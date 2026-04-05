@@ -16,7 +16,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   void initState() {
     super.initState();
-      controller = PageController();
+    controller = PageController();
   }
 
   @override
@@ -158,13 +158,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       if (currentPage < pages.length - 1) {
                         controller.nextPage(
                           duration: const Duration(milliseconds: 500),
-                          curve: Curves.easeInOut,
+                          curve: Curves.fastOutSlowIn,
                         );
                       } else {
                         await SharedPrefsHelper.instance.saveOnboardingStatus(
                           true,
                         );
-                        if (!mounted) return;
+                      if (!mounted) return;
 
                         Navigator.pushReplacementNamed(context, AppRoutes.home);
                       }

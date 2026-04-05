@@ -49,7 +49,7 @@ class SuraDetailsScreen extends StatelessWidget {
                                 shrinkWrap: true,
                                 physics: BouncingScrollPhysics(),
                                 itemCount: controller.surah!.verses.length,
-                                separatorBuilder: (_, __) =>
+                                separatorBuilder: (_, _) =>
                                     SizedBox(height: 5.h),
                                 itemBuilder: (context, index) {
                                   final verse = controller.surah!.verses[index];

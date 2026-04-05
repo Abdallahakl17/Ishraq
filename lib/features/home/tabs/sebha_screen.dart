@@ -1,4 +1,6 @@
 import 'package:ishraq/core/my_shared.dart';
+import 'package:ishraq/core/routes/sebha_contoller.dart';
+import 'package:provider/provider.dart';
 
 class SebhaScreen extends StatefulWidget {
   const SebhaScreen({super.key});
@@ -8,32 +10,10 @@ class SebhaScreen extends StatefulWidget {
 }
 
 class _SebhaScreenState extends State<SebhaScreen> {
-  int counter = 0;
-  int addRotated = 0;
-  int currentZakrIndex = 0;
-  List<String> zakrAllah = [
-    AppString.subhanAllah,
-    AppString.alhamdulillah,
-    AppString.laIlahaIllallah,
-    AppString.allahuAkbar,
-  ];
-  void changedSebha() {
-    setState(() {
-      counter++;
-      addRotated++;
-
-      if (counter >= 34) {
-        counter = 0;
-        currentZakrIndex++;
-        if (currentZakrIndex >= zakrAllah.length) {
-          currentZakrIndex = 0;
-        }
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final controller = context.watch<SebhaController>();
+
     return Scaffold(
       body: Stack(
         children: [
@@ -53,7 +33,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
                 Center(
                   child: Image.asset(
                     AppAssetsImages.logoImage,
-                   fit: BoxFit.cover,
+                    fit: BoxFit.cover,
                   ),
                 ),
 
@@ -77,13 +57,13 @@ class _SebhaScreenState extends State<SebhaScreen> {
                   alignment: Alignment.center,
                   children: [
                     Transform.rotate(
-                      angle: addRotated * 0.1,
+                      angle: controller.addRotated * 0.1,
 
                       child: InkWell(
-                        onTap: changedSebha,
+                        onTap: controller.changedSebha,
                         child: FittedBox(
                           child: Transform.translate(
-                            offset: Offset(0, -8),
+                            offset: Offset(0, -8.h),
                             child: Image.asset(
                               fit: BoxFit.cover,
                               AppAssetsImages.sebhaBodyImage,
@@ -99,13 +79,13 @@ class _SebhaScreenState extends State<SebhaScreen> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          zakrAllah[currentZakrIndex],
+                          controller.zakrAllah[controller.currentZakrIndex],
                           style: Theme.of(context).textTheme.titleLarge,
                           textAlign: TextAlign.center,
                         ),
                         SizedBox(height: 10.h),
                         Text(
-                          counter.toString(),
+                          controller.counter.toString(),
                           style: Theme.of(context).textTheme.titleLarge,
                           textAlign: TextAlign.center,
                         ),

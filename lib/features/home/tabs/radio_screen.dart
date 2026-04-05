@@ -1,8 +1,6 @@
-import 'package:flutter/gestures.dart';
-import 'package:ishraq/controller/radio_contoller.dart';
+import 'package:ishraq/controller/radio_conreoller.dart';
 import 'package:ishraq/core/my_shared.dart';
-import 'package:ishraq/features/home/widgets/radio_screen/Custom_Container_Radio_Play.dart';
-import 'package:ishraq/features/home/widgets/radio_screen/custom_selected_radio_tab.dart';
+import 'package:ishraq/features/home/widgets/radio_screen/custom_pontainer_padio_play.dart';
 import 'package:provider/provider.dart';
 
 class RadioScreen extends StatelessWidget {
@@ -22,19 +20,25 @@ class RadioScreen extends StatelessWidget {
 
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(5.h),
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-              color: Colors.transparent,
+            child: Padding(
+              padding: REdgeInsets.symmetric(horizontal: 20),
+              child: Container(
+                clipBehavior: Clip.none,
+                height: 40.h,
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(12.r),
+                ),
+                child: TabBar(
+                  dividerColor: Colors.transparent,
+                  tabs: [
+                    Tab(text: "Radio "),
+                    Tab(text: "Reciters"),
+                  ],
+                ),
 
-              child: TabBar(
-                indicatorColor: Colors.transparent,
-                tabs: [
-                  Tab(text: "Radio "),
-                  Tab(text: "Reciters"),
-                ],
+                // bottom: PreferredSize(
               ),
-
-              // bottom: PreferredSize(
             ),
           ),
         ),
@@ -68,19 +72,52 @@ class RadioScreen extends StatelessWidget {
 
               child: TabBarView(
                 children: [
-                  Column(
-                    children: [
-                      CustomContainerRadioPlay(),
-                      CustomContainerRadioPlay(),
-                    ],
+                  Consumer<RadioController>(
+                    builder: (context, controller, child) {
+                      if (controller.radios.isEmpty) {
+                        return const Center(child: CircularProgressIndicator());
+                      }
+
+                      return ListView.builder(
+                        itemCount: controller.radios.length,
+
+                        itemBuilder: (context, index) {
+                          final radio = controller.radios[index];
+
+                          final isCurrent =
+                              controller.currentRadio?.id == radio.id;
+
+                          return CustomContainerRadioPlay(
+                            name: radio.name,
+                            onPressedPlay: () {
+                              if (isCurrent && controller.isPlaying) {
+                                controller.stopRadio();
+                              } else {
+                                controller.playRadio(radio);
+                              }
+                            },
+                            onPressedMute: controller.muteSound,
+                            iconPlay: Icon(
+                              isCurrent && controller.isPlaying
+                                  ? Icons.pause
+                                  : Icons.play_arrow,
+                              color: AppColorsLigth.black,
+                              size: 35.r,
+                            ),
+                            iconMute: Icon(
+                              controller.isMuted
+                                  ? Icons.volume_off
+                                  : Icons.volume_up,
+                              color: AppColorsLigth.black,
+                              size: 30.r,
+                            ),
+                          );
+                        },
+                      );
+                    },
                   ),
 
-                  Column(
-                    children: [
-                      CustomContainerRadioPlay(),
-                      CustomContainerRadioPlay(),
-                    ],
-                  ),
+                  Column(children: [Container()]),
                 ],
               ),
             ),

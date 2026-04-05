@@ -9,11 +9,8 @@ class ApiConstants {
       "https://api.aladhan.com/v1";
 
  
-   static const String radios =
-      "$mp3QuranBaseUrl/radios";
-
-   static const String reciters =
-      "$mp3QuranBaseUrl/reciters";
+static const String radios = "/radios";
+static const String reciters = "/reciters";
 static const String prayTimesByCity = "/timingsByCity";
 
 }

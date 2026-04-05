@@ -6,7 +6,7 @@ final ThemeData lightTheme = ThemeData(
   scaffoldBackgroundColor: AppColorsLigth.primaryColor,
   fontFamily: 'JannaLT',
 
-  tabBarTheme: TabBarThemeData(
+  tabBarTheme: TabBarThemeData(dividerColor: Colors.transparent,
     indicatorColor: Colors.transparent,
     indicator: BoxDecoration(
       color: AppColorsLigth.gold,

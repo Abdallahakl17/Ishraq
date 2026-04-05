@@ -9,7 +9,7 @@ import 'package:ishraq/features/home/widgets/time_screen/time_bg.dart';
 import 'package:provider/provider.dart';
 
 class TimeScreen extends StatelessWidget {
-  TimeScreen({super.key});
+  const TimeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +87,23 @@ class TimeScreen extends StatelessWidget {
                             }).toList(),
                           ),
                         ),
-                        NextPrayRow(remainingTime: model.prayers[0].time),
+                        NextPrayRow(
+                          iconData: IconButton(
+                            onPressed: controller.muteSound,
+                            icon: Icon(
+                              controller.isMuted
+                                  ? Icons.volume_off
+                                  : Icons.volume_up,
+                              color: AppColorsLigth.black,
+                            ),
+                          ),
+
+                          remainingTime: controller.getNextPrayer() != null
+                              ? controller.formatTime(
+                                  controller.getNextPrayer()!.time,
+                                )
+                              : "",
+                        ),
                       ],
                     ),
                   ),

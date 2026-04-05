@@ -23,7 +23,7 @@ class ApiClient {
 
   // ================= GET =================
 Future<Map<String, dynamic>> get(
-  String path, {
+    String path, {
   required String baseUrl,
   Map<String, dynamic>? query,
 }) async {

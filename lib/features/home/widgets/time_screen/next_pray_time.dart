@@ -2,8 +2,8 @@ import 'package:ishraq/core/my_shared.dart';
 
 class NextPrayRow extends StatelessWidget {
   final String remainingTime;
-
-  const NextPrayRow({super.key, required this.remainingTime});
+final Widget iconData;
+    const NextPrayRow({super.key,required this.iconData ,required this.remainingTime});
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -15,7 +15,7 @@ class NextPrayRow extends StatelessWidget {
           Text('Next Pray - ', style: Theme.of(context).textTheme.bodyLarge),
           Text(remainingTime, style: Theme.of(context).textTheme.bodyMedium),
           Spacer(),
-          Icon(Icons.volume_off, color: AppColorsLigth.black),
+         iconData
         ],
       ),
     );
