@@ -1,9 +1,10 @@
+import 'package:ishraq/controller/search_controller.dart';
 import 'package:ishraq/core/my_shared.dart';
 import 'package:ishraq/core/validators/feilds/custom_textfeild.dart';
 import 'package:ishraq/features/home/models/sura_items_model.dart';
 import 'package:ishraq/features/home/screens/sura_deatails.dart';
 import 'package:ishraq/features/home/widgets/sura_screen/custom_list_items_sura.dart';
-import 'package:ishraq/features/home/widgets/custom_most_recent.dart';
+import 'package:provider/provider.dart';
 
 class QuranScreen extends StatelessWidget {
   const QuranScreen({super.key});
@@ -31,14 +32,18 @@ class QuranScreen extends StatelessWidget {
                 SizedBox(height: 30.h),
 
                 Align(
-                  alignment: AlignmentGeometry.topCenter,
-
+                  alignment: Alignment.topCenter,
                   child: Image.asset(AppAssetsImages.logoImage),
                 ),
 
+                /// Search Field
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 20.h),
                   child: CustomTextField(
+                    keyboardType: TextInputType.text,
+                    onChanged: (value) {
+                      context.read<SearchControllerQuran>().searchSura(value);
+                    },
                     hintText: AppString.suraName,
                     prefixIcon: ImageIcon(
                       AssetImage(AppAssetsIcons.qeuranIcon),
@@ -46,46 +51,64 @@ class QuranScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Text(
-                  AppString.mostRecently,
-                  style: Theme.of(context).textTheme.labelMedium,
-                ),
 
-                CustomMostRecent(
-                  nameSuraAr: 'Al-Anbiya',
-                  nameSuraEn: 'الأنبياء',
-                  numSuraRevres: '112',
-                ),
+                /// Title
                 Text(
                   AppString.suraName,
                   style: Theme.of(context).textTheme.labelMedium,
                 ),
 
-                ListView.separated(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemBuilder: (BuildContext context, int index) =>
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => SuraDetailsScreen(
-                                surahNumber:
-                                    SurahModel.suras[index].numSuraIndex,
-                              ),
-                            ),
+                Consumer<SearchControllerQuran>(
+                  builder:
+                      (
+                        BuildContext context,
+                        SearchControllerQuran controller,
+                        Widget? child,
+                      ) {
+                        if (controller.isLoading) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
                           );
-                        },
+                        }
 
-                        child: CustomListItemsSura(
-                          surahModel: SurahModel.suras[index],
-                        ),
-                      ),
-                  separatorBuilder: (BuildContext context, int index) =>
-                      Divider(),
-                  itemCount: SurahModel.suras.length,
+                        if (controller.searchText.isNotEmpty &&
+                            controller.filteredSuras.isEmpty) {
+                          return Padding(
+                            padding: EdgeInsets.only(top: 40.h),
+                            child: const Center(child: Text("لا توجد نتائج")),
+                          );
+                        }
+
+                        final suraList = controller.searchText.isEmpty
+                            ? SurahModel.suras
+                            : controller.filteredSuras;
+
+                        return ListView.separated(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: suraList.length,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => SuraDetailsScreen(
+                                      surahNumber: suraList[index].numSuraIndex,
+                                    ),
+                                  ),
+                                );
+                              },
+
+                              child: CustomListItemsSura(
+                                surahModel: suraList[index],
+                              ),
+                            );
+                          },
+
+                          separatorBuilder: (_, _) => const Divider(),
+                        );
+                      },
                 ),
               ],
             ),
