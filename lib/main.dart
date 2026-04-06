@@ -1,37 +1,64 @@
-import 'package:ishraq/core/assets/shared/shared_prefs_helper.dart';
+import 'package:ishraq/controller/hadith_controller.dart';
+import 'package:ishraq/controller/radio_conreoller.dart';
+import 'package:ishraq/controller/search_controller.dart';
+import 'package:ishraq/controller/time_controller.dart';
+import 'package:ishraq/core/routes/sebha_contoller.dart';
+import 'package:ishraq/core/shared/shared_prefs_helper.dart';
 import 'package:ishraq/core/my_shared.dart';
 import 'package:ishraq/features/home/screens/home_screen.dart';
 import 'package:ishraq/features/on_boarding/screens/onboarding_screen.dart';
+import 'package:provider/provider.dart';
 
-void main() async{
-    WidgetsFlutterBinding.ensureInitialized(); 
-await  SharedPrefsHelper.init();
-bool complete  = SharedPrefsHelper.instance.getOnboardingStatus();
-  runApp(  MyApp(startPage:complete ?AppRoutes.home :AppRoutes.onBoarding ,));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  FlutterError.onError = (details) {
+    debugPrint('Flutter Error: $details');
+  };
+
+  bool complete = false;
+  try {
+    await SharedPrefsHelper.init();
+    complete = SharedPrefsHelper.instance.getOnboardingStatus();
+  } catch (e) {
+    debugPrint("SharedPrefs init error: $e");
+  }
+
+  runApp(MyApp(startPage: complete ? AppRoutes.home : AppRoutes.onBoarding));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key ,required this .startPage});
+  const MyApp({super.key, required this.startPage});
   final String startPage;
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(430, 932),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (context, child) {
-        return MaterialApp(
-          theme: AppTheme.light,
-          debugShowCheckedModeBanner: false,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => HadithController()),
+        ChangeNotifierProvider(create: (_) => SebhaController()),
+        ChangeNotifierProvider(create: (_) => RadioController()..fetchRadios()),
+        ChangeNotifierProvider(
+          create: (_) => TimeController()..fetchPrayerTimes(),
+        ),        ChangeNotifierProvider(create: (_) => SearchControllerQuran()),
 
-          initialRoute: startPage ,
-          routes: {
-            AppRoutes.onBoarding: (context) => OnboardingScreen(),
-            AppRoutes.home: (context) => HomeScreen(),
-          },
-        );
-      },
+       ],
+      child: ScreenUtilInit(
+        designSize: const Size(430, 932),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) {
+          return MaterialApp(
+            theme: AppTheme.light,
+            debugShowCheckedModeBanner: false,
+            initialRoute: startPage,
+            routes: {
+              AppRoutes.onBoarding: (context) => OnboardingScreen(),
+              AppRoutes.home: (context) => HomeScreen(),
+            },
+          );
+        },
+      ),
     );
   }
 }

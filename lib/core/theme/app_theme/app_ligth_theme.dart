@@ -1,4 +1,3 @@
-import 'package:flutter/services.dart';
 import 'package:ishraq/core/my_shared.dart';
 
 final ThemeData lightTheme = ThemeData(
@@ -6,42 +5,52 @@ final ThemeData lightTheme = ThemeData(
   primaryColor: AppColorsLigth.primaryColor,
   scaffoldBackgroundColor: AppColorsLigth.primaryColor,
   fontFamily: 'JannaLT',
+
+  tabBarTheme: TabBarThemeData(dividerColor: Colors.transparent,
+    indicatorColor: Colors.transparent,
+    indicator: BoxDecoration(
+      color: AppColorsLigth.gold,
+      borderRadius: BorderRadius.circular(12.r),
+    ),
+    labelColor: AppColorsLigth.black,
+    unselectedLabelColor: AppColorsLigth.white,
+    labelStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+    unselectedLabelStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+    indicatorSize: TabBarIndicatorSize.tab,
+  ),
+
   appBarTheme: AppBarTheme(
+    centerTitle: true,
     elevation: 0,
     backgroundColor: AppColorsLigth.primaryColor,
-    iconTheme: IconThemeData(color: AppColorsLigth.primaryColor, size: 24.sp),
-    actionsIconTheme: IconThemeData(
-      color: AppColorsLigth.primaryColor,
-      size: 24.sp,
-    ),
+
+    iconTheme: IconThemeData(color: AppColorsLigth.gold, size: 24.sp),
+
+    actionsIconTheme: IconThemeData(color: AppColorsLigth.gold, size: 24.sp),
+
     titleTextStyle: TextStyle(
       fontSize: 20.sp,
       fontWeight: FontWeight.bold,
-      color: AppColorsLigth.primaryColor,
+      color: AppColorsLigth.gold,
       fontFamily: 'JannaLT',
     ),
-    toolbarHeight: 56.h,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(bottom: Radius.circular(16.r)),
-    ),
-    systemOverlayStyle: SystemUiOverlayStyle.light,
   ),
   iconTheme: IconThemeData(color: AppColorsLigth.gold, size: 20.sp),
   textTheme: TextTheme(
     headlineMedium: TextStyle(
-     fontSize: 24.sp,
+      fontSize: 24.sp,
       fontWeight: FontWeight.bold,
       color: AppColorsLigth.gold,
-  ),
+    ),
     headlineSmall: TextStyle(
-     fontSize: 20.sp,
+      fontSize: 20.sp,
       fontWeight: FontWeight.bold,
       color: AppColorsLigth.gold,
-  ),
+    ),
     labelLarge: TextStyle(
       fontSize: 24.sp,
       fontWeight: FontWeight.bold,
-      color: AppColorsLigth.primaryColor,
+      color: AppColorsLigth.black,
     ),
     labelMedium: TextStyle(
       fontSize: 16.sp,
@@ -51,14 +60,33 @@ final ThemeData lightTheme = ThemeData(
     labelSmall: TextStyle(
       fontSize: 14.sp,
       fontWeight: FontWeight.bold,
-      color: AppColorsLigth.primaryColor,
+      color: AppColorsLigth.black,
+    ),
+    displaySmall: TextStyle(
+      fontSize: 16.sp,
+      fontWeight: FontWeight.bold,
+      color: AppColorsLigth.black,
     ),
     titleMedium: TextStyle(
       fontSize: 20.sp,
       fontWeight: FontWeight.bold,
       color: AppColorsLigth.white,
     ),
+    bodyLarge: TextStyle(
+      fontSize: 20.sp,
+      fontWeight: FontWeight.bold,
+      color: AppColorsLigth.primaryColor,
+    ),bodyMedium:  TextStyle(
+      fontSize: 20.sp,
+      fontWeight: FontWeight.bold,
+      color: AppColorsLigth.primaryColor,
+    ) ,
     titleLarge: TextStyle(
+      fontSize: 36.sp,
+      fontWeight: FontWeight.bold,
+      color: AppColorsLigth.white,
+    ),
+    displayLarge:  TextStyle(
       fontSize: 36.sp,
       fontWeight: FontWeight.bold,
       color: AppColorsLigth.white,
@@ -78,9 +106,8 @@ final ThemeData lightTheme = ThemeData(
     ),
   ),
   inputDecorationTheme: InputDecorationTheme(
-    isDense: true,
-    filled: true,
-    fillColor: AppColorsLigth.primaryColor,
+    fillColor: Colors.transparent,
+    prefixIconColor: AppColorsLigth.gold,
     hintStyle: TextStyle(
       color: AppColorsLigth.white,
       fontSize: 16.sp,
@@ -109,12 +136,34 @@ final ThemeData lightTheme = ThemeData(
     ),
   ),
   listTileTheme: ListTileThemeData(
+    titleTextStyle: TextStyle(
+      fontSize: 20.sp,
+      fontWeight: FontWeight.bold,
+      color: AppColorsLigth.white,
+    ),
+    subtitleTextStyle: TextStyle(
+      fontSize: 14.sp,
+      fontWeight: FontWeight.bold,
+      color: AppColorsLigth.white,
+    ),
     tileColor: Colors.transparent,
     textColor: AppColorsLigth.white,
     iconColor: AppColorsLigth.white,
-    leadingAndTrailingTextStyle: TextStyle(color: AppColorsLigth.white),
-    contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-    dense: true,
-    style: ListTileStyle.drawer,
+    leadingAndTrailingTextStyle: TextStyle(
+      fontSize: 20.sp,
+      fontWeight: FontWeight.bold,
+      color: AppColorsLigth.white,
+    ),
+    contentPadding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+  ),
+
+  dividerTheme: DividerThemeData(
+    endIndent: 55.w,
+    indent: 55.w,
+    color: AppColorsLigth.white,
+  ),
+  progressIndicatorTheme: ProgressIndicatorThemeData(
+    color: AppColorsLigth.gold,
+    circularTrackColor: AppColorsLigth.gold.withAlpha(50),
   ),
 );

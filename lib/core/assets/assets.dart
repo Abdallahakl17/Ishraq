@@ -1,6 +1,7 @@
 abstract class AppAssetsImages {
   static const String mainAssetsPath = 'assets/images/';
   static const String logoImage = '${mainAssetsPath}Logo_image.png';
+  static const String bgImageHome = '${mainAssetsPath}bg_image_home.png';
   static const String backgroundImage = '${mainAssetsPath}background.png';
   static const String sebhaBodyImage = '${mainAssetsPath}SebhaBody.png';
   static const String rangSebhaImage = '${mainAssetsPath}rang_sebha.png';
@@ -9,11 +10,21 @@ abstract class AppAssetsImages {
   static const String prayImage = '${mainAssetsPath}pray.png';
   static const String wellcomImage = '${mainAssetsPath}welcom.png';
   static const String quranAndSebhaImage = '${mainAssetsPath}qurqn_sebha.png';
-}
-
-abstract class AppAssetsIcons {
+  static const String angleRigthImage = '${mainAssetsPath}angle_rigth.png';
+  static const String angleLeftImage = '${mainAssetsPath}angle_left.png';
+  static const String mosqaImage = '${mainAssetsPath}mosqa.png';
+  static const String hadithBgImage = '${mainAssetsPath}bg_hadith.png';
+  static const String quranRescentImage = '${mainAssetsPath}quran_rescent_image.png';
+  static const String quranReadImage = '${mainAssetsPath}read_qran.png';
+  static const String timeBgImage = '${mainAssetsPath}time_bg.png';
+  static const String morningAzkarImage = '${mainAssetsPath}morning_azkar.png';
+  static const String eveningAzkarImage = '${mainAssetsPath}Evening Azkar.png';
+  static const String cardtimtabImage = '${mainAssetsPath}card_tim_tab.png';
+ }                                                                                                                                                                                        abstract class AppAssetsIcons {
   static const String mainAssetsPath = 'assets/icons/';
   static const String qeuranIcon = '${mainAssetsPath}quran_icon.png';
+  static const String numberSuraIcon = '${mainAssetsPath}icon_number_sura.png';
+  static const String searchIcon = '${mainAssetsPath}search_icon.png';
   static const String hadithIcon = '${mainAssetsPath}hadith_icon.png';
   static const String radioIcon = '${mainAssetsPath}radio_icon.png';
   static const String sebhaIcon = '${mainAssetsPath}sebha_icon.png';
