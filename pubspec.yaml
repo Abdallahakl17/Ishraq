@@ -56,6 +56,9 @@ flutter:
  
 
   fonts:
-    - family: JannaLT
-      fonts:
-        - asset: assets/fonts/alfont_com_Janna-LT-Bold.ttf
+  - family: JannaLT
+    fonts:
+      - asset: assets/fonts/ArbFONTS-JannaLT-Regular.ttf
+        weight: 400
+      - asset: assets/fonts/alfont_com_Janna-LT-Bold.ttf
+        weight: 700

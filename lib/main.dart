@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:ishraq/controller/hadith_controller.dart';
 import 'package:ishraq/controller/radio_conreoller.dart';
 import 'package:ishraq/controller/search_controller.dart';
@@ -11,9 +13,9 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await ScreenUtil.ensureScreenSize();
   FlutterError.onError = (details) {
-    debugPrint('Flutter Error: $details');
+    log('Flutter Error: $details');
   };
 
   bool complete = false;
@@ -21,7 +23,7 @@ void main() async {
     await SharedPrefsHelper.init();
     complete = SharedPrefsHelper.instance.getOnboardingStatus();
   } catch (e) {
-    debugPrint("SharedPrefs init error: $e");
+    log("SharedPrefs init error: $e");
   }
 
   runApp(MyApp(startPage: complete ? AppRoutes.home : AppRoutes.onBoarding));
@@ -37,12 +39,12 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => HadithController()),
         ChangeNotifierProvider(create: (_) => SebhaController()),
-        ChangeNotifierProvider(create: (_) => RadioController()..fetchRadios()),
+        ChangeNotifierProvider(create: (_) => RadioController()),
         ChangeNotifierProvider(
-          create: (_) => TimeController()..fetchPrayerTimes(),
-        ),        ChangeNotifierProvider(create: (_) => SearchControllerQuran()),
-
-       ],
+          create: (_) => TimeController(),
+        ),
+        ChangeNotifierProvider(create: (_) => SearchControllerQuran()),
+      ],
       child: ScreenUtilInit(
         designSize: const Size(430, 932),
         minTextAdapt: true,
@@ -53,8 +55,8 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             initialRoute: startPage,
             routes: {
-              AppRoutes.onBoarding: (context) => OnboardingScreen(),
-              AppRoutes.home: (context) => HomeScreen(),
+              AppRoutes.onBoarding: (_) => child ?? OnboardingScreen(),
+              AppRoutes.home: (_) => child ?? HomeScreen(),
             },
           );
         },

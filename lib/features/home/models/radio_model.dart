@@ -13,15 +13,20 @@ class RadioStation {
 
   factory RadioStation.fromJson(Map<String, dynamic> json) {
     return RadioStation(
-      id: json['id'],
-      name: json['name'],
-      url: json['url'],
-      recentDate: json['recent_date'],
+      id: int.tryParse(json['id']?.toString() ?? '0') ?? 0,
+      name: json['name']?.toString() ?? 'Unknown Radio',
+      url: json['url']?.toString() ?? '',
+      recentDate: json['recent_date']?.toString() ?? '',
     );
   }
 }
 
 List<RadioStation> parseRadios(Map<String, dynamic> json) {
-  var list = json['radios'] as List;
-  return list.map((e) => RadioStation.fromJson(e)).toList();
+  final list = json['radios'];
+
+  if (list is! List) return [];
+
+  return list
+      .map((e) => RadioStation.fromJson(e as Map<String, dynamic>))
+      .toList();
 }

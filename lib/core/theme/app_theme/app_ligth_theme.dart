@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishraq/core/my_shared.dart';
 
 final ThemeData lightTheme = ThemeData(
@@ -6,16 +8,19 @@ final ThemeData lightTheme = ThemeData(
   scaffoldBackgroundColor: AppColorsLigth.primaryColor,
   fontFamily: 'JannaLT',
 
-  tabBarTheme: TabBarThemeData(dividerColor: Colors.transparent,
-    indicatorColor: Colors.transparent,
+  tabBarTheme: TabBarThemeData(
+    dividerColor: Colors.transparent,
     indicator: BoxDecoration(
       color: AppColorsLigth.gold,
       borderRadius: BorderRadius.circular(12.r),
     ),
     labelColor: AppColorsLigth.black,
     unselectedLabelColor: AppColorsLigth.white,
-    labelStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-    unselectedLabelStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+    labelStyle: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
+    unselectedLabelStyle: TextStyle(
+      fontSize: 16.sp,
+      fontWeight: FontWeight.bold,
+    ),
     indicatorSize: TabBarIndicatorSize.tab,
   ),
 
@@ -23,11 +28,8 @@ final ThemeData lightTheme = ThemeData(
     centerTitle: true,
     elevation: 0,
     backgroundColor: AppColorsLigth.primaryColor,
-
     iconTheme: IconThemeData(color: AppColorsLigth.gold, size: 24.sp),
-
     actionsIconTheme: IconThemeData(color: AppColorsLigth.gold, size: 24.sp),
-
     titleTextStyle: TextStyle(
       fontSize: 20.sp,
       fontWeight: FontWeight.bold,
@@ -35,7 +37,9 @@ final ThemeData lightTheme = ThemeData(
       fontFamily: 'JannaLT',
     ),
   ),
+
   iconTheme: IconThemeData(color: AppColorsLigth.gold, size: 20.sp),
+
   textTheme: TextTheme(
     headlineMedium: TextStyle(
       fontSize: 24.sp,
@@ -62,11 +66,6 @@ final ThemeData lightTheme = ThemeData(
       fontWeight: FontWeight.bold,
       color: AppColorsLigth.black,
     ),
-    displaySmall: TextStyle(
-      fontSize: 16.sp,
-      fontWeight: FontWeight.bold,
-      color: AppColorsLigth.black,
-    ),
     titleMedium: TextStyle(
       fontSize: 20.sp,
       fontWeight: FontWeight.bold,
@@ -76,22 +75,24 @@ final ThemeData lightTheme = ThemeData(
       fontSize: 20.sp,
       fontWeight: FontWeight.bold,
       color: AppColorsLigth.primaryColor,
-    ),bodyMedium:  TextStyle(
+    ),
+    bodyMedium: TextStyle(
       fontSize: 20.sp,
       fontWeight: FontWeight.bold,
       color: AppColorsLigth.primaryColor,
-    ) ,
+    ),
     titleLarge: TextStyle(
       fontSize: 36.sp,
       fontWeight: FontWeight.bold,
       color: AppColorsLigth.white,
     ),
-    displayLarge:  TextStyle(
+    displayLarge: TextStyle(
       fontSize: 36.sp,
       fontWeight: FontWeight.bold,
       color: AppColorsLigth.white,
     ),
   ),
+
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       backgroundColor: AppColorsLigth.gold,
@@ -105,13 +106,16 @@ final ThemeData lightTheme = ThemeData(
       padding: EdgeInsets.all(16.r),
     ),
   ),
+
   inputDecorationTheme: InputDecorationTheme(
+    filled: true,
     fillColor: Colors.transparent,
     prefixIconColor: AppColorsLigth.gold,
     hintStyle: TextStyle(
-      color: AppColorsLigth.white,
       fontSize: 16.sp,
       fontWeight: FontWeight.bold,
+      color: AppColorsLigth.white,
+      fontFamily: 'JannaLT',
     ),
     contentPadding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 14.h),
     border: OutlineInputBorder(
@@ -135,6 +139,7 @@ final ThemeData lightTheme = ThemeData(
       borderSide: BorderSide(color: Colors.red, width: 1),
     ),
   ),
+
   listTileTheme: ListTileThemeData(
     titleTextStyle: TextStyle(
       fontSize: 20.sp,

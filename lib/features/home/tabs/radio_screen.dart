@@ -1,10 +1,28 @@
+import 'package:flutter/material.dart';
 import 'package:ishraq/controller/radio_conreoller.dart';
 import 'package:ishraq/core/my_shared.dart';
 import 'package:ishraq/features/home/widgets/radio_screen/custom_pontainer_padio_play.dart';
 import 'package:provider/provider.dart';
 
-class RadioScreen extends StatelessWidget {
+class RadioScreen extends StatefulWidget {
   const RadioScreen({super.key});
+
+  @override
+  State<RadioScreen> createState() => _RadioScreenState();
+}
+
+class _RadioScreenState extends State<RadioScreen> {
+  bool _isInit = true;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    if (_isInit) {
+      _isInit = false;
+      context.read<RadioController>().fetchRadios();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,27 +35,16 @@ class RadioScreen extends StatelessWidget {
           flexibleSpace: Center(
             child: Image.asset(AppAssetsImages.logoImage, fit: BoxFit.cover),
           ),
-
           bottom: PreferredSize(
             preferredSize: Size.fromHeight(5.h),
             child: Padding(
               padding: REdgeInsets.symmetric(horizontal: 20),
-              child: Container(
-                clipBehavior: Clip.none,
-                height: 40.h,
-                decoration: BoxDecoration(
-                  color: Colors.transparent,
-                  borderRadius: BorderRadius.circular(12.r),
-                ),
-                child: TabBar(
-                  dividerColor: Colors.transparent,
-                  tabs: [
-                    Tab(text: "Radio "),
-                    Tab(text: "Reciters"),
-                  ],
-                ),
-
-                // bottom: PreferredSize(
+              child: TabBar(
+                dividerColor: Colors.transparent,
+                tabs: const [
+                  Tab(text: "Radio"),
+                  Tab(text: "Reciters"),
+                ],
               ),
             ),
           ),
@@ -67,20 +74,37 @@ class RadioScreen extends StatelessWidget {
                 ),
               ),
             ),
+
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-
               child: TabBarView(
                 children: [
                   Consumer<RadioController>(
                     builder: (context, controller, child) {
-                      if (controller.radios.isEmpty) {
+                      // ================= LOADING =================
+                      if (controller.isLoading) {
                         return const Center(child: CircularProgressIndicator());
                       }
 
+                      // ================= ERROR =================
+                      if (controller.errorMessage != null) {
+                        return Center(
+                          child: Text(
+                            controller.errorMessage!,
+                            style: const TextStyle(color: Colors.red),
+                            textAlign: TextAlign.center,
+                          ),
+                        );
+                      }
+
+                      // ================= EMPTY =================
+                      if (controller.radios.isEmpty) {
+                        return const Center(child: Text("No radios available"));
+                      }
+
+                      // ================= LIST =================
                       return ListView.builder(
                         itemCount: controller.radios.length,
-
                         itemBuilder: (context, index) {
                           final radio = controller.radios[index];
 
@@ -117,7 +141,7 @@ class RadioScreen extends StatelessWidget {
                     },
                   ),
 
-                  Column(children: [Container()]),
+                  const Center(child: Text("Reciters")),
                 ],
               ),
             ),

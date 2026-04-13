@@ -49,7 +49,7 @@ class HadithCard extends StatelessWidget {
                     child: Center(
                       child: Text(
                         snapshot.data!["title"]!,
-                        style: Theme.of(context).textTheme.displaySmall!,
+                        style: Theme.of(context).textTheme.labelLarge,
                       ),
                     ),
                   ),
@@ -63,14 +63,14 @@ class HadithCard extends StatelessWidget {
 
               SizedBox(height: 10.h),
 
-               Expanded(
+              Expanded(
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20.w),
                     child: Text(
                       snapshot.data!["content"]!,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.displaySmall,
+                      style: Theme.of(context).textTheme.labelSmall,
                     ),
                   ),
                 ),

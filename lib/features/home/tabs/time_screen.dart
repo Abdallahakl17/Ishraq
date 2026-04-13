@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
 import 'package:ishraq/controller/time_controller.dart';
 import 'package:ishraq/core/my_shared.dart';
 import 'package:ishraq/features/home/widgets/time_screen/app_card_pray_time.dart';
@@ -8,8 +9,26 @@ import 'package:ishraq/features/home/widgets/time_screen/next_pray_time.dart';
 import 'package:ishraq/features/home/widgets/time_screen/time_bg.dart';
 import 'package:provider/provider.dart';
 
-class TimeScreen extends StatelessWidget {
+class TimeScreen extends StatefulWidget {
   const TimeScreen({super.key});
+
+  @override
+  State<TimeScreen> createState() => _TimeScreenState();
+}
+
+class _TimeScreenState extends State<TimeScreen> {
+
+   bool _isInit = true;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    if (_isInit) {
+      _isInit = false;  print("FETCH PRAYER TIMES CALLED"); 
+      context.read<TimeController>().fetchPrayerTimes();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +36,9 @@ class TimeScreen extends StatelessWidget {
     final model = controller.prayerModel;
 
     if (model == null) {
-      return const Center(child: CircularProgressIndicator());
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
+
     return Scaffold(
       body: Stack(
         children: [
@@ -41,14 +61,13 @@ class TimeScreen extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                Container(
-                  clipBehavior: Clip.none,
 
+                /// CARD
+                Container(
                   width: double.infinity,
                   height: 300.h,
                   decoration: BoxDecoration(
                     color: AppColorsLigth.ligthBrown,
-
                     borderRadius: BorderRadius.circular(40.r),
                   ),
                   child: Container(
@@ -59,7 +78,6 @@ class TimeScreen extends StatelessWidget {
                       ),
                     ),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         AppTopPrayTime(
@@ -68,25 +86,27 @@ class TimeScreen extends StatelessWidget {
                           hijriDate:
                               '${model.hijriDay} ${model.hijriMonth.trim().substring(0, 3)} ${model.hijriYear}',
                         ),
-                        Center(
-                          child: CarouselSlider(
-                            options: CarouselOptions(
-                              height: 128.h,
-                              enlargeCenterPage: true,
-                              enlargeStrategy: CenterPageEnlargeStrategy.height,
-                              enableInfiniteScroll: false,
-                              viewportFraction: 0.28,
-                              initialPage: 2,
-                            ),
-                            items: model.prayers.map((prayer) {
-                              return ListContainerItemTimeCard(
-                                prayerName: prayer.name,
-                                time: controller.formatTime(prayer.time),
-                                period: controller.getPeriod(prayer.time),
-                              );
-                            }).toList(),
+
+                        /// PRAYERS
+                        CarouselSlider(
+                          options: CarouselOptions(
+                            height: 128.h,
+                            enlargeCenterPage: true,
+                            enlargeStrategy: CenterPageEnlargeStrategy.height,
+                            enableInfiniteScroll: false,
+                            viewportFraction: 0.28,
+                            initialPage: 2,
                           ),
+                          items: model.prayers.map((prayer) {
+                            return ListContainerItemTimeCard(
+                              prayerName: prayer.name,
+                              time: controller.formatTime(prayer.time),
+                              period: controller.getPeriod(prayer.time),
+                            );
+                          }).toList(),
                         ),
+
+                        /// NEXT PRAYER
                         NextPrayRow(
                           iconData: IconButton(
                             onPressed: controller.muteSound,
@@ -97,7 +117,6 @@ class TimeScreen extends StatelessWidget {
                               color: AppColorsLigth.black,
                             ),
                           ),
-
                           remainingTime: controller.getNextPrayer() != null
                               ? controller.formatTime(
                                   controller.getNextPrayer()!.time,
@@ -116,13 +135,9 @@ class TimeScreen extends StatelessWidget {
                     style: Theme.of(context).textTheme.labelMedium,
                   ),
                 ),
+
                 Expanded(
-                  child: AzkarCard(
-                    onTapEnvening: () {
-                      ();
-                    },
-                    onTapMorning: () {},
-                  ),
+                  child: AzkarCard(onTapEnvening: () {}, onTapMorning: () {}),
                 ),
               ],
             ),
